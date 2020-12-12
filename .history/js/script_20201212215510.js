@@ -14,11 +14,6 @@ function titleClickHandler(event){
   /* add class 'active' to the clicked link */
 
   /* remove class 'active' from all articles */
-    const activeArticles = document.querySelectorAll('.post.active');
-
-    for(let activeArticle of activeArticles){
-    activeArticle.classList.remove('active');
-    }
 
   /* get 'href' attribute from the clicked link */
 
