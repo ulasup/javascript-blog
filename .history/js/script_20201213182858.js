@@ -36,8 +36,6 @@ function generateTitleLinks(){
 
   const articles = document.querySelectorAll(optArticleSelector);
 
-  let html = '';
-
   for (let article of articles){
 
     const articleId = article.getAttribute('id');
@@ -46,7 +44,7 @@ function generateTitleLinks(){
 
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
 
-    html = html + linkHTML;
+    titleList.insertAdjacentHTML('beforeend', linkHTML);
   }
 
   titleList.innerHTML = html;

@@ -46,7 +46,7 @@ function generateTitleLinks(){
 
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
 
-    html = html + linkHTML;
+    html = html.insertAdjacentHTML('afterend', linkHTML);
   }
 
   titleList.innerHTML = html;

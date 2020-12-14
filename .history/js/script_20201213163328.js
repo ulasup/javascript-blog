@@ -22,6 +22,7 @@ function titleClickHandler(event){
 
   const clickedArticles = document.querySelectorAll(atribute);
 
+  /* [DONE] add class 'active' to the correct article */
   for(let clickedArticle of clickedArticles){
     clickedArticle.classList.add('active');
   }
