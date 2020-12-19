@@ -34,6 +34,7 @@ function generateTitleLinks(){
   titleList.innerHTML = '';
 
   const articles = document.querySelectorAll(optArticleSelector);
+
   let html = '';
   for (let article of articles){
     const articleId = article.getAttribute('id');
