@@ -16,9 +16,11 @@ function titleClickHandler(event){
     activeArticle.classList.remove('active');
   }
 
-  const articleSelector = clickedElement.getAttribute('href');
-  const targetArticle = document.querySelector(articleSelector);
-  targetArticle.classList.add('active');
+  const attribute = clickedElement.getAttribute('href');
+  const clickedArticles = document.querySelectorAll(attribute);
+  for(let clickedArticle of clickedArticles){
+    clickedArticle.classList.add('active');
+  }
 }
 
 const optArticleSelector = '.post',
@@ -88,7 +90,7 @@ function tagClickHandler(event){
 }
 
 function addClickListenersToTags(){
-  const links =  document.querySelectorAll('.list');
+  const links =  document.querySelectorAll('a[href=""]');
   for(let link of links){
     link.addEventListener('click', tagClickHandler);
   }

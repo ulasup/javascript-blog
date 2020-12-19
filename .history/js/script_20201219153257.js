@@ -16,9 +16,11 @@ function titleClickHandler(event){
     activeArticle.classList.remove('active');
   }
 
-  const articleSelector = clickedElement.getAttribute('href');
-  const targetArticle = document.querySelector(articleSelector);
-  targetArticle.classList.add('active');
+  const attribute = clickedElement.getAttribute('href');
+  const clickedArticles = document.querySelectorAll(attribute);
+  for(let clickedArticle of clickedArticles){
+    clickedArticle.classList.add('active');
+  }
 }
 
 const optArticleSelector = '.post',
@@ -72,7 +74,7 @@ function tagClickHandler(event){
 
   const clickedElement = this;
   const href = clickedElement.getAttribute('href');
-  const tag = href.replace('#tag-', '');
+  const tag = href.slice(5);
 
   const activeTags = document.querySelectorAll('a.active[href^="#tag-"]');
   for(let activeTag of activeTags){
@@ -88,7 +90,7 @@ function tagClickHandler(event){
 }
 
 function addClickListenersToTags(){
-  const links =  document.querySelectorAll('.list');
+  const links =  document.querySelectorAll(optArticleTagsSelector);
   for(let link of links){
     link.addEventListener('click', tagClickHandler);
   }

@@ -17,8 +17,10 @@ function titleClickHandler(event){
   }
 
   const articleSelector = clickedElement.getAttribute('href');
-  const targetArticle = document.querySelector(articleSelector);
-  targetArticle.classList.add('active');
+  const clickedArticles = document.querySelector(articleSelector);
+  for(let clickedArticle of clickedArticles){
+    clickedArticle.classList.add('active');
+  }
 }
 
 const optArticleSelector = '.post',

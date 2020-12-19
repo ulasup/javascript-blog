@@ -47,7 +47,6 @@ function generateTitleLinks(customSelector = ''){
   }
 }
 
-generateTitleLinks();
 
 
 function generateTags(){

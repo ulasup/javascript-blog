@@ -16,9 +16,11 @@ function titleClickHandler(event){
     activeArticle.classList.remove('active');
   }
 
-  const articleSelector = clickedElement.getAttribute('href');
-  const targetArticle = document.querySelector(articleSelector);
-  targetArticle.classList.add('active');
+  const attribute = clickedElement.getAttribute('href');
+  const clickedArticles = document.querySelectorAll(attribute);
+  for(let clickedArticle of clickedArticles){
+    clickedArticle.classList.add('active');
+  }
 }
 
 const optArticleSelector = '.post',
@@ -26,12 +28,12 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list';
 
-function generateTitleLinks(customSelector = ''){
+function generateTitleLinks(){
 
   const titleList = document.querySelector(optTitleListSelector);
   titleList.innerHTML = '';
 
-  const articles = document.querySelectorAll(optArticleSelector + customSelector);
+  const articles = document.querySelectorAll(optArticleSelector);
   let html = '';
   for (let article of articles){
     const articleId = article.getAttribute('id');
@@ -79,19 +81,25 @@ function tagClickHandler(event){
     activeTag.classList.remove('active');
   }
 
-  const tagLinks = document.querySelectorAll('a[href="' + href + '"]');
-  for (let tagLink of tagLinks){
-    tagLink.classList.add('active');
-  }
+  /* find all tag links with "href" attribute equal to the "href" constant */
 
-  generateTitleLinks('[data-tags~="' + tag + '"]');
+  /* START LOOP: for each found tag link */
+
+    /* add class active */
+
+  /* END LOOP: for each found tag link */
+
+  /* execute function "generateTitleLinks" with article selector as argument */
 }
 
 function addClickListenersToTags(){
-  const links =  document.querySelectorAll('.list');
-  for(let link of links){
-    link.addEventListener('click', tagClickHandler);
-  }
+  /* find all links to tags */
+
+  /* START LOOP: for each link */
+
+    /* add tagClickHandler as event listener for that link */
+
+  /* END LOOP: for each link */
 }
 
 addClickListenersToTags();

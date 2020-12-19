@@ -17,8 +17,8 @@ function titleClickHandler(event){
   }
 
   const articleSelector = clickedElement.getAttribute('href');
-  const targetArticle = document.querySelector(articleSelector);
-  targetArticle.classList.add('active');
+  const clickedArticles = document.querySelector(articleSelector);
+  clickedArticles.classList.add('active');
 }
 
 const optArticleSelector = '.post',
