@@ -139,7 +139,7 @@ function generateAuthors(){
   for (let article of articles){
     const authorsList = article.querySelector(optArticleAuthorSelector);
     const articleAuthor = article.getAttribute('data-author');
-    const linkHTML = '<a href="' + articleAuthor + '"><span>by ' + articleAuthor + '</span></a>';
+    const linkHTML = '<a href="#' + articleAuthor + '"><span>by ' + articleAuthor + '</span></a>';
     authorsList.innerHTML = linkHTML;
   }
 }
@@ -168,10 +168,30 @@ function authorClickHandler(event){
 }
 
 function addClickListenersToAuthors(){
-  const links =  document.querySelectorAll('.post-author a');
+  const links =  document.querySelectorAll(optArticleAuthorSelector);
   for(let link of links){
     link.addEventListener('click', authorClickHandler);
   }
 }
 
 addClickListenersToAuthors();
+
+
+
+/* find all tag links with class active */
+
+/* START LOOP: for each active tag link */
+
+/* remove class active */
+
+/* END LOOP: for each active tag link */
+
+/* find all tag links with "href" attribute equal to the "href" constant */
+
+/* START LOOP: for each found tag link */
+
+/* add class active */
+
+/* END LOOP: for each found tag link */
+
+/* execute function "generateTitleLinks" with article selector as argument */
