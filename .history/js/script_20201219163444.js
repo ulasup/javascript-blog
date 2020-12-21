@@ -24,11 +24,7 @@ function titleClickHandler(event){
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
-  optArticleTagsSelector = '.post-tags .list',
-  optTagsListSelector = '.tags.list',
-  optArticleAuthorSelector = '.post-author',
-  optCloudClassCount = 5,
-  optCloudClassPrefix = 'tag-size-';
+  optArticleTagsSelector = '.post-tags .list';
 
 function generateTitleLinks(customSelector = ''){
 
@@ -53,28 +49,8 @@ function generateTitleLinks(customSelector = ''){
 
 generateTitleLinks();
 
-function calculateTagsParams(tags){
-  const params = {
-    max: 0,
-    min: 999999
-  };
-  for(let tag in tags){
-    if(tags[tag] > params.max){
-      params.max = tags[tag];
-    }
-    if(tags[tag] < params.min){
-      params.min = tags[tag];
-    }
-  }
-  return params;
-}
-
-function calculateTagClass(count, params){
-
-}
 
 function generateTags(){
-  let allTags = {};
   const articles = document.querySelectorAll(optArticleSelector);
   for (let article of articles){
     const tagList = article.querySelector(optArticleTagsSelector);
@@ -84,22 +60,9 @@ function generateTags(){
     for (let tag of articleTagsArray){
       const linkHTML = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>';
       html = html + linkHTML;
-      if(!allTags.hasOwnProperty(tag)){
-        allTags[tag] = 1;
-      } else {
-        allTags[tag]++;
-      }
     }
     tagList.innerHTML = html;
   }
-  const tagList = document.querySelector('.tags');
-  const tagsParams = calculateTagsParams(allTags);
-  let allTagsHTML = '';
-  for(let tag in allTags){
-    allTagsHTML += tag + ' (' + allTags[tag] + ') ';
-  }
-  tagList.innerHTML = allTagsHTML;
-
 }
 
 generateTags();
@@ -109,7 +72,7 @@ function tagClickHandler(event){
 
   const clickedElement = this;
   console.log(clickedElement);
-  const href = clickedElement.getAttribute('href');
+  const href = clickedElement.getAttribute('a.href');
   const tag = href.replace('#tag-', '');
 
   const activeTags = document.querySelectorAll('a.active[href^="#tag-"]');
@@ -126,22 +89,10 @@ function tagClickHandler(event){
 }
 
 function addClickListenersToTags(){
-  const links =  document.querySelectorAll('.post-tags .list a');
+  const links =  document.querySelectorAll('.list');
   for(let link of links){
     link.addEventListener('click', tagClickHandler);
   }
 }
 
 addClickListenersToTags();
-
-function generateAuthors(){
-  const articles = document.querySelectorAll(optArticleSelector);
-  for (let article of articles){
-    const authorsList = article.querySelector(optArticleAuthorSelector);
-    const articleAuthor = article.getAttribute('data-author');
-    const linkHTML = '<a href="#' + articleAuthor + '"><span>by ' + articleAuthor + '</span></a>';
-    authorsList.innerHTML = linkHTML;
-  }
-}
-
-generateAuthors();

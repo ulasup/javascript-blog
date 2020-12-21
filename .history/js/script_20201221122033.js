@@ -26,7 +26,7 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
   optTagsListSelector = '.tags.list',
-  optArticleAuthorSelector = '.post-author',
+  optArticleAuthorSelector = '.authors',
   optCloudClassCount = 5,
   optCloudClassPrefix = 'tag-size-';
 
@@ -134,14 +134,43 @@ function addClickListenersToTags(){
 
 addClickListenersToTags();
 
+
+
+
 function generateAuthors(){
   const articles = document.querySelectorAll(optArticleSelector);
+  const authorsList = document.querySelector(optArticleAuthorSelector);
+  let html = '';
   for (let article of articles){
-    const authorsList = article.querySelector(optArticleAuthorSelector);
-    const articleAuthor = article.getAttribute('data-author');
-    const linkHTML = '<a href="#' + articleAuthor + '"><span>by ' + articleAuthor + '</span></a>';
-    authorsList.innerHTML = linkHTML;
+    const articleAuthor = article.getAttribute('post-author');
+    const linkHTML = '<li><a href="#' + articleAuthor + '"><span>by ' + articleAuthor + '</span></a></li>';
+    html = html + linkHTML;
   }
+  authorsList.innerHTML = html;
 }
 
 generateAuthors();
+
+/* find all articles */
+
+/* START LOOP: for every article: */
+
+/* find tags wrapper */
+
+/* make html variable with empty string */
+
+/* get tags from data-tags attribute */
+
+/* split tags into array */
+
+/* START LOOP: for each tag */
+
+/* generate HTML of the link */
+
+/* add generated code to html variable */
+
+/* END LOOP: for each tag */
+
+/* insert HTML of all the links into the tags wrapper */
+
+/* END LOOP: for every article: */

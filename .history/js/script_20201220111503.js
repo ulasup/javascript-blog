@@ -26,7 +26,6 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
   optTagsListSelector = '.tags.list',
-  optArticleAuthorSelector = '.post-author',
   optCloudClassCount = 5,
   optCloudClassPrefix = 'tag-size-';
 
@@ -94,6 +93,7 @@ function generateTags(){
   }
   const tagList = document.querySelector('.tags');
   const tagsParams = calculateTagsParams(allTags);
+  console.log('tagsParams:', tagsParams);
   let allTagsHTML = '';
   for(let tag in allTags){
     allTagsHTML += tag + ' (' + allTags[tag] + ') ';
@@ -133,15 +133,3 @@ function addClickListenersToTags(){
 }
 
 addClickListenersToTags();
-
-function generateAuthors(){
-  const articles = document.querySelectorAll(optArticleSelector);
-  for (let article of articles){
-    const authorsList = article.querySelector(optArticleAuthorSelector);
-    const articleAuthor = article.getAttribute('data-author');
-    const linkHTML = '<a href="#' + articleAuthor + '"><span>by ' + articleAuthor + '</span></a>';
-    authorsList.innerHTML = linkHTML;
-  }
-}
-
-generateAuthors();

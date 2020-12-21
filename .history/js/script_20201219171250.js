@@ -25,10 +25,7 @@ const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
-  optTagsListSelector = '.tags.list',
-  optArticleAuthorSelector = '.post-author',
-  optCloudClassCount = 5,
-  optCloudClassPrefix = 'tag-size-';
+  optTagsListSelector = '.tags.list';
 
 function generateTitleLinks(customSelector = ''){
 
@@ -53,25 +50,6 @@ function generateTitleLinks(customSelector = ''){
 
 generateTitleLinks();
 
-function calculateTagsParams(tags){
-  const params = {
-    max: 0,
-    min: 999999
-  };
-  for(let tag in tags){
-    if(tags[tag] > params.max){
-      params.max = tags[tag];
-    }
-    if(tags[tag] < params.min){
-      params.min = tags[tag];
-    }
-  }
-  return params;
-}
-
-function calculateTagClass(count, params){
-
-}
 
 function generateTags(){
   let allTags = {};
@@ -93,13 +71,8 @@ function generateTags(){
     tagList.innerHTML = html;
   }
   const tagList = document.querySelector('.tags');
-  const tagsParams = calculateTagsParams(allTags);
-  let allTagsHTML = '';
-  for(let tag in allTags){
-    allTagsHTML += tag + ' (' + allTags[tag] + ') ';
-  }
-  tagList.innerHTML = allTagsHTML;
-
+  // tagList.innerHTML = allTags.join(' ');
+  console.log(allTags);
 }
 
 generateTags();
@@ -126,22 +99,10 @@ function tagClickHandler(event){
 }
 
 function addClickListenersToTags(){
-  const links =  document.querySelectorAll('.post-tags .list a');
+  const links =  document.querySelectorAll(optArticleTagsSelector);
   for(let link of links){
     link.addEventListener('click', tagClickHandler);
   }
 }
 
 addClickListenersToTags();
-
-function generateAuthors(){
-  const articles = document.querySelectorAll(optArticleSelector);
-  for (let article of articles){
-    const authorsList = article.querySelector(optArticleAuthorSelector);
-    const articleAuthor = article.getAttribute('data-author');
-    const linkHTML = '<a href="#' + articleAuthor + '"><span>by ' + articleAuthor + '</span></a>';
-    authorsList.innerHTML = linkHTML;
-  }
-}
-
-generateAuthors();
