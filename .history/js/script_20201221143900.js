@@ -96,7 +96,7 @@ function generateTags(){
   const tagsParams = calculateTagsParams(allTags);
   let allTagsHTML = '';
   for(let tag in allTags){
-    const linkAllTagsHTML = '<li><a href="#tag-' + tag + '">' + tag + ' (' + allTags[tag] + ') </a></li>';
+    linkAllTagsHTML = '<li><a href="">' + tag + ' (' + allTags[tag] + ') </a></li>';
     allTagsHTML = allTagsHTML + linkAllTagsHTML
   }
   tagList.innerHTML = allTagsHTML;
