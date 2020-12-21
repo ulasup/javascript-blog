@@ -101,7 +101,7 @@ function generateTags(){
   const tagsParams = calculateTagsParams(allTags);
   let allTagsHTML = '';
   for(let tag in allTags){
-    const linkAllTagsHTML = '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + ' (' + allTags[tag] + ') </a></li>';
+    const linkAllTagsHTML = '<li><a href="#tag-' + tag + '" class="">' + tag + ' (' + allTags[tag] + ') </a></li>';
     allTagsHTML += linkAllTagsHTML;
   }
   tagList.innerHTML = allTagsHTML;
