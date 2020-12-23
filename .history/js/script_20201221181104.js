@@ -97,7 +97,7 @@ function generateTags(){
     }
     tagList.innerHTML = html;
   }
-  const tagList = document.querySelector(optTagsListSelector);
+  const tagList = document.querySelector('optTagsListSelector');
   const tagsParams = calculateTagsParams(allTags);
   let allTagsHTML = '';
   for(let tag in allTags){

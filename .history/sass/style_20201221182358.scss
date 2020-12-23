@@ -1,14 +1,24 @@
-@import url("https://fonts.googleapis.com/css?family=Oswald:400,600|Sacramento|Source+Sans+Pro:300&subset=latin-ext");
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,600|Sacramento|Source+Sans+Pro:300&subset=latin-ext');
+
 /* Variables */
+
+$color-light: #fff;
+$color-dark: #444;
+
+$font-logo: 'Sacramento', cursive;
+$font-header: 'Oswald', sans-serif;
+$font-text: 'Source Sans Pro', sans-serif;
+
 /* Global */
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 body {
-  background: #fff;
-  font-family: "Source Sans Pro", sans-serif;
-  color: #444;
+  background: $color-light;
+  font-family: $font-text;
+  color: $color-dark;
   font-weight: 300;
   font-size: 16px;
   line-height: 1.7;
@@ -22,44 +32,43 @@ body {
 .section-title {
   font-size: 22px;
   text-transform: uppercase;
-  font-family: "Oswald", sans-serif;
+  font-family: $font-header;
   font-weight: 600;
-}
 
-.section-title span {
-  text-transform: none;
-  font-weight: 400;
-  color: #777777;
+  span {
+    text-transform: none;
+    font-weight: 400;
+    color: lighten($color-dark, 20%);
+  }
 }
 
 /* Layout */
+
 .wrapper {
-  display: -ms-flexbox;
   display: flex;
   margin-left: 10px;
 }
 
 .sidebar {
-  -ms-flex: 1 0 0px;
-      flex: 1 0 0;
+  flex: 1 0 0;
 }
 
 .posts {
-  -ms-flex: 2 0 0px;
-      flex: 2 0 0;
+  flex: 2 0 0;
 }
 
 .sidebar, .posts {
-  background: #fff;
+  background: $color-light;
   margin-right: 10px;
   padding: 40px;
-  border: 1px solid #444;
+  border: 1px solid $color-dark;
   border-radius: 5px;
 }
 
 /* Logo */
+
 .logo {
-  font-family: "Sacramento", cursive;
+  font-family: $font-logo;
   font-weight: 400;
   font-size: 104px;
   line-height: 1;
@@ -67,38 +76,45 @@ body {
 }
 
 /* Lists */
+
 .list {
   list-style-type: none;
   margin: 0;
   padding: 0;
+
+  .active {
+    font-weight: bold;
+  }
 }
 
-.list .active {
-  font-weight: bold;
-}
-
-.list-horizontal li {
-  display: inline-block;
-  margin-right: 5px;
+.list-horizontal {
+  li {
+    display: inline-block;
+    margin-right: 5px;
+  }
 }
 
 /* Authors */
-.authors li {
-  margin-bottom: 12px;
+
+.authors {
+  li {
+    margin-bottom: 12px;
+  }
 }
 
 /* Post */
+
 .post {
   z-index: -1;
   position: absolute;
   opacity: 0;
-}
 
-.post.active {
-  z-index: 2;
-  position: relative;
-  opacity: 1;
-  transition: opacity 1s;
+  &.active {
+    z-index: 2;
+    position: relative;
+    opacity: 1;
+    transition: opacity 1s;
+  }
 }
 
 .post-author {
@@ -106,23 +122,17 @@ body {
 }
 
 .post-tags {
-  display: -ms-flexbox;
   display: flex;
+
+  p {
+    margin: 0 10px 0 0;
+  }
 }
 
-.post-tags p {
-  margin: 0 10px 0 0;
-}
-
-.tags li {
-  display: inline-block;
-  margin-right: 5px;
-}
-
-a[class^="tag-size-"] {
+.tag-size-* {
   text-decoration: none;
+  display: inline-block;
 }
-
 .tag-size-1 {
   color: #81ecec;
   font-size: 18px;
@@ -147,4 +157,3 @@ a[class^="tag-size-"] {
   color: #2980b9;
   font-size: 14px;
 }
-/*# sourceMappingURL=style.css.map */

@@ -97,7 +97,7 @@ function generateTags(){
     }
     tagList.innerHTML = html;
   }
-  const tagList = document.querySelector(optTagsListSelector);
+  const tagList = document.querySelector('.tags');
   const tagsParams = calculateTagsParams(allTags);
   let allTagsHTML = '';
   for(let tag in allTags){
@@ -172,7 +172,7 @@ function authorClickHandler(event){
 }
 
 function addClickListenersToAuthors(){
-  const links =  document.querySelectorAll('a[href^="#author-"]');
+  const links =  document.querySelectorAll('a[href~="#author-"]');
   for(let link of links){
     link.addEventListener('click', authorClickHandler);
   }

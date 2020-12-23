@@ -25,7 +25,6 @@ const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
-  optTagsListSelector = '.tags.list',
   optArticleAuthorSelector = '.post-author',
   optCloudClassCount = 5,
   optCloudClassPrefix = 'tag-size-';
@@ -97,7 +96,7 @@ function generateTags(){
     }
     tagList.innerHTML = html;
   }
-  const tagList = document.querySelector(optTagsListSelector);
+  const tagList = document.querySelector('.tags');
   const tagsParams = calculateTagsParams(allTags);
   let allTagsHTML = '';
   for(let tag in allTags){
