@@ -1,15 +1,15 @@
 'use strict';
 
 const opt = {
-  articleSelector = '.post',
-  titleSelector = '.post-title',
-  titleListSelector = '.titles',
-  articleTagsSelector = '.post-tags .list',
-  tagsListSelector = '.tags.list',
-  articleAuthorSelector = '.post-author',
-  authorsListSelector = '.authors.list',
-  cloudClassCount = 5,
-  cloudClassPrefix = 'tag-size-';
+  articleSelector: '.post',
+  titleSelector: '.post-title',
+  titleListSelector: '.titles',
+  articleTagsSelector: '.post-tags .list',
+  tagsListSelector: '.tags.list',
+  articleAuthorSelector: '.post-author',
+  authorsListSelector: '.authors.list',
+  cloudClassCount: 5,
+  cloudClassPrefix: 'tag-size-'
 };
 
 function titleClickHandler(event){
