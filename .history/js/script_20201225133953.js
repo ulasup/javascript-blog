@@ -27,7 +27,7 @@ const optArticleSelector = '.post',
   optArticleTagsSelector = '.post-tags .list',
   optTagsListSelector = '.tags.list',
   optArticleAuthorSelector = '.post-author',
-  optAuthorsListSelector = '.authors.list',
+  optAuthorsListSelector = '.authors',
   optCloudClassCount = 5,
   optCloudClassPrefix = 'tag-size-';
 
@@ -133,6 +133,7 @@ function tagClickHandler(event){
 
 function addClickListenersToTags(){
   const links =  document.querySelectorAll('a[href^="#tag-"]');
+  console.log(links);
   for(let link of links){
     link.addEventListener('click', tagClickHandler);
   }
@@ -156,6 +157,7 @@ function generateAuthors(){
     }
   }
   const authorList = document.querySelector(optAuthorsListSelector);
+  console.log(optAuthorsListSelector);
   let allAuthorsHTML = '';
   for(let articleAuthor in allAuthors){
     const linkAllAuthorsHTML = '<li><a href="#author-' + articleAuthor + '">' + articleAuthor + ' (' + allAuthors[articleAuthor] + ')' + '</a></li>';
@@ -170,15 +172,14 @@ function authorClickHandler(event){
   event.preventDefault();
 
   const clickedElement = this;
-  const href = clickedElement.getAttribute('href');
-  const author = href.replace('#author-', '');
+  const author = clickedElement.getAttribute('href');
 
-  const activeAuthors = document.querySelectorAll('a.active[href^="#author-"]');
+  const activeAuthors = document.querySelectorAll('a.active');
   for(let activeAuthor of activeAuthors){
     activeAuthor.classList.remove('active');
   }
 
-  const authorLinks = document.querySelectorAll('a[href="' + href + '"]');
+  const authorLinks = document.querySelectorAll(author);
   for (let authorLink of authorLinks){
     authorLink.classList.add('active');
   }
@@ -189,6 +190,7 @@ function authorClickHandler(event){
 
 function addClickListenersToAuthors(){
   const links =  document.querySelectorAll('a[href^="#author-"]');
+  console.log(links);
   for(let link of links){
     link.addEventListener('click', authorClickHandler);
   }

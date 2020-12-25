@@ -178,7 +178,7 @@ function authorClickHandler(event){
     activeAuthor.classList.remove('active');
   }
 
-  const authorLinks = document.querySelectorAll('a[href="' + href + '"]');
+  const authorLinks = document.querySelectorAll('a[href="' + author + '"]');
   for (let authorLink of authorLinks){
     authorLink.classList.add('active');
   }

@@ -27,7 +27,7 @@ const optArticleSelector = '.post',
   optArticleTagsSelector = '.post-tags .list',
   optTagsListSelector = '.tags.list',
   optArticleAuthorSelector = '.post-author',
-  optAuthorsListSelector = '.authors.list',
+  optAuthorsListSelector = '.authors',
   optCloudClassCount = 5,
   optCloudClassPrefix = 'tag-size-';
 
@@ -178,7 +178,7 @@ function authorClickHandler(event){
     activeAuthor.classList.remove('active');
   }
 
-  const authorLinks = document.querySelectorAll('a[href="' + href + '"]');
+  const authorLinks = document.querySelectorAll('a[href="' + author + '"]');
   for (let authorLink of authorLinks){
     authorLink.classList.add('active');
   }

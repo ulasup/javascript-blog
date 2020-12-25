@@ -25,9 +25,8 @@ const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
-  optTagsListSelector = '.tags.list',
+  optTagsListSelector = '.tags .list',
   optArticleAuthorSelector = '.post-author',
-  optAuthorsListSelector = '.authors.list',
   optCloudClassCount = 5,
   optCloudClassPrefix = 'tag-size-';
 
@@ -141,27 +140,13 @@ function addClickListenersToTags(){
 addClickListenersToTags();
 
 function generateAuthors(){
-  let allAuthors = {};
   const articles = document.querySelectorAll(optArticleSelector);
   for (let article of articles){
     const authorsList = article.querySelector(optArticleAuthorSelector);
     const articleAuthor = article.getAttribute('data-author');
     const linkHTML = '<a href="#author-' + articleAuthor + '"><span>by ' + articleAuthor + '</span></a>';
     authorsList.innerHTML = linkHTML;
-
-    if(!allAuthors.hasOwnProperty(articleAuthor)){
-      allAuthors[articleAuthor] = 1;
-    } else {
-      allAuthors[articleAuthor]++;
-    }
   }
-  const authorList = document.querySelector(optAuthorsListSelector);
-  let allAuthorsHTML = '';
-  for(let articleAuthor in allAuthors){
-    const linkAllAuthorsHTML = '<li><a href="#author-' + articleAuthor + '">' + articleAuthor + ' (' + allAuthors[articleAuthor] + ')' + '</a></li>';
-    allAuthorsHTML += linkAllAuthorsHTML;
-  }
-  authorList.innerHTML = allAuthorsHTML;
 }
 
 generateAuthors();
@@ -170,15 +155,14 @@ function authorClickHandler(event){
   event.preventDefault();
 
   const clickedElement = this;
-  const href = clickedElement.getAttribute('href');
-  const author = href.replace('#author-', '');
+  const author = clickedElement.getAttribute('href');
 
-  const activeAuthors = document.querySelectorAll('a.active[href^="#author-"]');
+  const activeAuthors = document.querySelectorAll('a.active');
   for(let activeAuthor of activeAuthors){
     activeAuthor.classList.remove('active');
   }
 
-  const authorLinks = document.querySelectorAll('a[href="' + href + '"]');
+  const authorLinks = document.querySelectorAll(author);
   for (let authorLink of authorLinks){
     authorLink.classList.add('active');
   }
